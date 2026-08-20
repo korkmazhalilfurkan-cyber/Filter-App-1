@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f1ea" />
+    <title>Faceplay Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#"><span class="brand-mark">✦</span><span>FACEPLAY</span></a>
+      <div class="status-pill"><span class="status-dot"></span><span id="cameraStatus">Kamera bereit</span></div>
+      <button class="icon-button" id="mirrorButton" title="Kamera spiegeln" aria-label="Kamera spiegeln">↔</button>
+      <button class="chatbot-button" id="chatbotButton" type="button"><span>✦</span> Chatbot</button>
+    </header>
+
+    <main class="app-shell">
+      <section class="hero-copy">
+        <p class="eyebrow">FILTER STUDIO / 01</p>
+        <h1>Dein Gesicht.<br /><em>Neue Regeln.</em></h1>
+        <p class="intro">Wähle einen Look und lass die Kamera den Rest machen.</p>
+      </section>
+
+      <section class="studio-grid">
+        <div class="camera-column">
+          <div class="camera-stage" id="cameraStage">
+            <video id="video" autoplay muted playsinline></video>
+            <div class="stage-tint" id="stageTint"></div>
+            <div class="face-frame" id="faceFrame"><i></i><i></i><i></i><i></i><span id="faceLabel">Gesicht wird gesucht</span></div>
+            <div class="camera-placeholder" id="cameraPlaceholder">
+              <div class="placeholder-icon">◉</div>
+              <strong>Kamera aktivieren</strong>
+              <span>Dein Bild bleibt in diesem Browser.</span>
+              <button class="primary-button" id="startButton"><span>●</span> Kamera starten</button>
+            </div>
+            <div class="stage-toolbar">
+              <span class="live-label"><span class="live-dot"></span> LIVE</span>
+              <span id="detectionStatus">Noch keine Kamera</span>
+              <button id="snapshotButton" class="capture-button" title="Moment aufnehmen" aria-label="Moment aufnehmen">●</button>
+            </div>
+          </div>
+          <div class="selected-strip"><div><span class="mini-label">AKTUELLER LOOK</span><strong id="selectedName">Original</strong></div><span class="selected-tag" id="selectedTag">Natürlich</span></div>
+          <div class="sound-controls"><label class="sound-select"><span>♫</span><select id="captureMusicSelect" title="Sound auswählen"><option value="">Ohne Sound</option></select></label><label class="sound-upload">＋ Sound hinzufügen<input id="soundInput" type="file" accept="audio/*" multiple hidden /></label><button id="recordButton" class="record-button" type="button">◉ Video aufnehmen</button></div>
+        </div>
+
+        <aside class="filter-panel">
+          <div class="panel-heading"><div><p class="eyebrow">COLLECTION</p><h2>Filter wählen</h2></div><span class="count" id="filterCount">0</span></div>
+          <label class="search-field"><span>⌕</span><input id="searchInput" type="search" placeholder="Filter suchen..." /></label>
+          <div class="category-tabs" id="categoryTabs"></div>
+          <div class="filter-list" id="filterList"></div>
+        </aside>
+      </section>
+
+      <section class="gallery-section">
+        <div class="gallery-heading"><div><p class="eyebrow">DEINE MOMENTE</p><h2>Galerie</h2></div><span class="count" id="galleryCount">0 FOTOS</span></div>
+        <div class="gallery-grid" id="galleryGrid"><div class="gallery-empty"><span>✦</span><strong>Noch keine Fotos</strong><p>Drücke den Auslöser, um deinen ersten Look zu speichern.</p></div></div>
+      </section>
+
+    </main>
+    <div class="toast" id="toast" role="status"></div>
+    <aside class="chatbot-panel" id="chatbotPanel" aria-hidden="true">
+      <div class="chatbot-heading"><div><p class="eyebrow">FACEPLAY AI</p><h2>Chatbot</h2></div><button class="close-button" id="closeChatbot" type="button" aria-label="Chatbot schließen">×</button></div>
+      <div class="chatbot-messages" id="chatbotMessages"><div class="bot-message">Hi! Ich kann dir Filter-Ideen geben oder dir helfen, einen Look auszuwählen.</div></div>
+      <form class="chatbot-form" id="chatbotForm"><input id="chatbotInput" required maxlength="500" placeholder="Frag Faceplay AI ..." autocomplete="off" /><button type="submit" aria-label="Nachricht senden">↑</button></form>
+      <p class="chatbot-note">Groq-Verbindung über den lokalen Node.js-Server.</p>
+    </aside>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "faceplay-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Faceplay Studio with a secure Groq chatbot proxy",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
